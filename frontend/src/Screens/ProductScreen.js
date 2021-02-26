@@ -42,7 +42,16 @@ function ProductScreen(props) {
 					<ul>
 						<li>Price: {product.price}</li>
 						<li>Status: {product.status}</li>
-						<li>Qty: {product.price}</li>
+						<li>
+							Qty:
+							<select>
+								<option>1</option>
+								<option>2</option>
+								<option>3</option>
+								<option>4</option>
+							</select>
+						</li>
+						<button>Add To Cart</button>
 					</ul>
 				</div>
 			</div>

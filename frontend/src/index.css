@@ -145,17 +145,26 @@ a:hover {
 	align-items: flex-start;
 	flex-wrap: wrap;
 }
+
 .details-image img {
 	max-width: 60rem;
 	width: 100%;
 	/* widows: 100%; */
 }
+
 .details-image {
 	flex: 2 1 60rem;
 }
+
 .details-info {
 	flex: 2 1 30rem;
 }
+
 .details-action {
 	flex: 2 1 30rem;
+}
+
+.details-info ul,
+.details-action ul {
+	list-style-type: none;
 }
