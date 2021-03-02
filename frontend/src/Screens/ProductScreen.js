@@ -1,17 +1,25 @@
-import React from "react";
+import React, { useEffect } from "react";
 import { Link } from "react-router-dom";
-import data from "../data";
+import { useSelector, useDispatch } from "react-redux";
+import { detailsProduct } from "../actions/productActions";
 
 function ProductScreen(props) {
-	const id = props.match.params.id;
-	console.log(props.match.params);
-	const product = data.products.find((x) => x._id === props.match.params.id);
-	console.log(id);
+	const productDetails = useSelector((state) => state.productDetails);
+	const { product, loading, error } = productDetails;
+	const dispatch = useDispatch();
+	useEffect(() => {
+		dispatch(detailsProduct());
+		return () => {};
+	}, []);
+	// const id = props.match.params.id;
+	// console.log(props.match.params);
+	// const product = data.products.find((x) => x._id === props.match.params.id);
+	// console.log(id);
 
 	return (
 		<div>
 			{" "}
-			<div>
+			<div className="back-to-results">
 				<Link to="/">Back</Link>
 			</div>
 			<div className="details">
@@ -30,7 +38,7 @@ function ProductScreen(props) {
 							</p>
 						</li>
 						<li>
-							<b>{product.price}</b>
+							Price: <b>${product.price}</b>
 						</li>
 						<li>
 							Description:
@@ -51,7 +59,9 @@ function ProductScreen(props) {
 								<option>4</option>
 							</select>
 						</li>
-						<button>Add To Cart</button>
+						<li>
+							<button className="button">Add To Cart</button>
+						</li>
 					</ul>
 				</div>
 			</div>

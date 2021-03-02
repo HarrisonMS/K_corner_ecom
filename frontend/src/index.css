@@ -22,7 +22,7 @@ body {
 }
 .header {
 	grid-area: header;
-	background-color: #203040;
+	background-color: #495477;
 	color: #ffffff;
 	display: flex;
 	justify-content: space-between;
@@ -41,14 +41,14 @@ body {
 	padding: 1rem;
 }
 .header-links a:hover {
-	color: #ff8000;
+	color: #ebcd6a;
 }
 .main {
 	grid-area: main;
 }
 .footer {
 	grid-area: footer;
-	background-color: #203040;
+	background-color: #495477;
 	color: #ffffff;
 	display: flex;
 	justify-content: center;
@@ -58,7 +58,7 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	color: #ff8000;
+	color: #ebcd6a;
 }
 /* Home Screen */
 .products {
@@ -144,6 +144,7 @@ a:hover {
 	justify-content: space-between;
 	align-items: flex-start;
 	flex-wrap: wrap;
+	padding: 1rem;
 }
 
 .details-image img {
@@ -167,4 +168,50 @@ a:hover {
 .details-info ul,
 .details-action ul {
 	list-style-type: none;
+	padding: 0;
+}
+
+.details-info li,
+.details-action li {
+	margin-bottom: 1rem;
+}
+
+.back-to-results {
+	padding: 1rem;
+}
+
+.details-action {
+	border: 0.1rem #808080 solid;
+	border-radius: 0.5rem;
+	background-color: #f0f0f0;
+	padding: 1rem;
+}
+
+.details-action ul li:last-child {
+	display: flex;
+	flex-direction: column;
+}
+
+.button {
+	padding: 1rem;
+	border: 0.1rem #808080 solid;
+	border-radius: 0.5rem;
+	cursor: pointer;
+}
+
+.button:hover {
+	border: 0.1rem #404040 solid;
+}
+
+button:active {
+	transition: 0.2s all;
+	transform: translateY(0.05rem);
+	background-color: darken(#ebcd6a, 80%);
+}
+
+.button:focus {
+	outline: none;
+}
+.button {
+	background-color: #ebcd6a;
 }
