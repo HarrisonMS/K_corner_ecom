@@ -5,10 +5,13 @@ import { detailsProduct } from "../actions/productActions";
 
 function ProductScreen(props) {
 	const productDetails = useSelector((state) => state.productDetails);
+	console.log("the details", productDetails);
 	const { product, loading, error } = productDetails;
+	const id = props.match.params.id;
+	console.log("in productscreen", product, loading, error);
 	const dispatch = useDispatch();
 	useEffect(() => {
-		dispatch(detailsProduct());
+		dispatch(detailsProduct(id));
 		return () => {};
 	}, []);
 	// const id = props.match.params.id;
@@ -16,7 +19,11 @@ function ProductScreen(props) {
 	// const product = data.products.find((x) => x._id === props.match.params.id);
 	// console.log(id);
 
-	return (
+	return loading ? (
+		<div>Loadding</div>
+	) : error ? (
+		<div>{error}</div>
+	) : (
 		<div>
 			{" "}
 			<div className="back-to-results">

@@ -6,6 +6,7 @@ import { listProducts } from "../actions/productActions";
 function HomeScreen(props) {
 	const productList = useSelector((state) => state.productList);
 	const { products, loading, error } = productList;
+	console.log(products);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(listProducts());
@@ -19,9 +20,9 @@ function HomeScreen(props) {
 		<div>
 			<ul className="products">
 				{products.map((product) => (
-					<li key={product._id}>
+					<li key={product.id}>
 						<div className="product">
-							<Link to={`/product/${product._id}`}>
+							<Link to={`/products/${product.id}`}>
 								<img
 									className="product-image"
 									src={product.image}
