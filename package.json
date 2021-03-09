@@ -17,7 +17,8 @@
 	},
 	"devDependencies": {},
 	"scripts": {
-		"server": "nodemon --watch /backend index.js"
+		"server": "nodemon --watch /backend index.js",
+		"start": "node index.js"
 	},
 	"repository": {
 		"type": "git",
