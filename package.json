@@ -17,7 +17,7 @@
 	},
 	"devDependencies": {},
 	"scripts": {
-		"server": "nodemon --watch /backend -x \"npm run imagemin\""
+		"server": "nodemon --watch /backend index.js"
 	},
 	"repository": {
 		"type": "git",
