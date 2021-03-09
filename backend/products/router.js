@@ -11,4 +11,15 @@ router.get("/", (req, res) => {
 		});
 });
 
+router.get("/:id", (req, res) => {
+	const { id } = req.params;
+	Products.getById(id)
+		.then((product) => {
+			console.log(product);
+			res.status(200).json({ proudct });
+		})
+		.catch((err) => {
+			res.status(400).json({ err: err.message });
+		});
+});
 module.exports = router;

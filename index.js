@@ -1,3 +1,4 @@
+require("dotenv").config();
 const server = require("./backend/api/server");
 
 const PORT = process.env.PORT || 5333;
