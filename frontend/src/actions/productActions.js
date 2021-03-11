@@ -25,8 +25,8 @@ const detailsProduct = (productId) => async (dispatch) => {
 		const { data } = await axios.get(
 			`http://localhost:5333/api/products/${productId}`
 		);
-		console.log(data.product[0]);
-		dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.product[0] });
+		console.log("details res", data);
+		dispatch({ type: PRODUCT_DETAILS_SUCCESS, payload: data.product });
 	} catch (error) {
 		dispatch({ type: PRODUCT_DETAILS_FAIL, payload: error.message });
 	}
