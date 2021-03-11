@@ -14,7 +14,6 @@ function productListReducer(state = { products: [] }, action) {
 				loading: true,
 			};
 		case PRODUCT_LIST_SUCCESS:
-			console.log(action);
 			return {
 				loading: false,
 				products: action.payload,
@@ -29,7 +28,6 @@ function productListReducer(state = { products: [] }, action) {
 	}
 }
 function productDetailsReducer(state = { product: {} }, action) {
-	console.log("action", action);
 	switch (action.type) {
 		case PRODUCT_DETAILS_REQUEST:
 			return {

@@ -1,23 +1,23 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { detailsProduct } from "../actions/productActions";
 
 function ProductScreen(props) {
+	const [qty, setQty] = useState(1);
 	const productDetails = useSelector((state) => state.productDetails);
-	console.log("the details", productDetails);
+
 	const { product, loading, error } = productDetails;
 	const id = props.match.params.id;
-	console.log("in productscreen", product, loading, error);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(detailsProduct(id));
 		return () => {};
 	}, []);
-	// const id = props.match.params.id;
-	// console.log(props.match.params);
-	// const product = data.products.find((x) => x._id === props.match.params.id);
-	// console.log(id);
+	console.log(qty);
+	const handleQtyChange = (e) => {
+		setQty(e.target.value);
+	};
 
 	return (
 		<div>
@@ -60,11 +60,10 @@ function ProductScreen(props) {
 							<li>Status: {product.status}</li>
 							<li>
 								Qty:
-								<select>
-									<option>1</option>
-									<option>2</option>
-									<option>3</option>
-									<option>4</option>
+								<select value={qty} onChange={handleQtyChange}>
+									{[...Array(product.countInStock).keys()].map((x) => (
+										<option value={x + 1}>{x + 1}</option>
+									))}
 								</select>
 							</li>
 							<li>

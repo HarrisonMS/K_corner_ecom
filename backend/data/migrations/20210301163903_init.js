@@ -30,6 +30,7 @@ exports.up = function (knex) {
 				tbl.string("description", 256).notNullable();
 				tbl.string("image", 255).notNullable();
 				tbl.integer("price", 255).notNullable();
+				tbl.integer("countInStock").notNullable();
 				tbl.string("brand", 128);
 				tbl.float("rating");
 				tbl.integer("numReviews");
