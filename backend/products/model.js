@@ -10,7 +10,6 @@ function getAll() {
 }
 
 function getById(id) {
-	console.log(id);
 	return db("products")
 		.where({ id: Number(id) })
 		.first();
