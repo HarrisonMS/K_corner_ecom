@@ -1,77 +1,78 @@
-import React, { useEffect } from "react";
+import React, { useState, useEffect } from "react";
 import { Link } from "react-router-dom";
 import { useSelector, useDispatch } from "react-redux";
 import { detailsProduct } from "../actions/productActions";
 
 function ProductScreen(props) {
+	const [qty, setQty] = useState(1);
 	const productDetails = useSelector((state) => state.productDetails);
-	console.log("the details", productDetails);
+
 	const { product, loading, error } = productDetails;
 	const id = props.match.params.id;
-	console.log("in productscreen", product, loading, error);
 	const dispatch = useDispatch();
 	useEffect(() => {
 		dispatch(detailsProduct(id));
 		return () => {};
 	}, []);
-	// const id = props.match.params.id;
-	// console.log(props.match.params);
-	// const product = data.products.find((x) => x._id === props.match.params.id);
-	// console.log(id);
+	console.log(qty);
+	const handleQtyChange = (e) => {
+		setQty(e.target.value);
+	};
 
-	return loading ? (
-		<div>Loadding</div>
-	) : error ? (
-		<div>{error}</div>
-	) : (
+	return (
 		<div>
 			{" "}
 			<div className="back-to-results">
 				<Link to="/">Back</Link>
 			</div>
-			<div className="details">
-				{" "}
-				<div className="details-image">
-					<img src={product.image} alt={product.name} />
+			{loading ? (
+				<div>Loading...</div>
+			) : error ? (
+				<div>{error}</div>
+			) : (
+				<div className="details">
+					{" "}
+					<div className="details-image">
+						<img src={product.image} alt={product.name} />
+					</div>
+					<div className="details-info">
+						<ul>
+							<li>
+								<h4>{product.name}</h4>
+							</li>
+							<li>
+								<p>
+									{product.rating} Stars ({product.numReviews})
+								</p>
+							</li>
+							<li>
+								Price: <b>${product.price}</b>
+							</li>
+							<li>
+								Description:
+								<div>{product.description}</div>
+							</li>
+						</ul>
+					</div>
+					<div className="details-action">
+						<ul>
+							<li>Price: {product.price}</li>
+							<li>Status: {product.status}</li>
+							<li>
+								Qty:
+								<select value={qty} onChange={handleQtyChange}>
+									{[...Array(product.countInStock).keys()].map((x) => (
+										<option value={x + 1}>{x + 1}</option>
+									))}
+								</select>
+							</li>
+							<li>
+								<button className="button">Add To Cart</button>
+							</li>
+						</ul>
+					</div>
 				</div>
-				<div className="details-info">
-					<ul>
-						<li>
-							<h4>{product.name}</h4>
-						</li>
-						<li>
-							<p>
-								{product.rating} Stars ({product.numReviews})
-							</p>
-						</li>
-						<li>
-							Price: <b>${product.price}</b>
-						</li>
-						<li>
-							Description:
-							<div>{product.description}</div>
-						</li>
-					</ul>
-				</div>
-				<div className="details-action">
-					<ul>
-						<li>Price: {product.price}</li>
-						<li>Status: {product.status}</li>
-						<li>
-							Qty:
-							<select>
-								<option>1</option>
-								<option>2</option>
-								<option>3</option>
-								<option>4</option>
-							</select>
-						</li>
-						<li>
-							<button className="button">Add To Cart</button>
-						</li>
-					</ul>
-				</div>
-			</div>
+			)}
 		</div>
 	);
 }

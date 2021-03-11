@@ -15,7 +15,6 @@ router.get("/:id", (req, res) => {
 	const { id } = req.params;
 	Products.getById(id)
 		.then((product) => {
-			console.log(product);
 			res.status(200).json({ product });
 		})
 		.catch((err) => {
