@@ -26,14 +26,34 @@ exports.up = function (knex) {
 			.createTable("products", (tbl) => {
 				tbl.increments();
 				tbl.string("name", 128).notNullable().index();
-				tbl.string("category", 128);
+				// tbl.string("category", 128);
 				tbl.string("description", 256).notNullable();
 				tbl.string("image", 255).notNullable();
 				tbl.integer("price", 255).notNullable();
 				tbl.integer("countInStock").notNullable();
 				tbl.string("brand", 128);
-				tbl.float("rating");
-				tbl.integer("numReviews");
+				// tbl.float("rating");
+				// tbl.integer("numReviews");
+			})
+
+			.createTable("carts", (tbl) => {
+				tbl.increments();
+
+				tbl
+					.integer("user_id")
+					.unsigned()
+					.references("id")
+					.inTable("users")
+					.onDelete("RESTRICT")
+					.onUpdate("CASCADE");
+
+				tbl
+					.integer("product_id")
+					.unsigned()
+					.references("id")
+					.inTable("products")
+					.onDelete("RESTRICT")
+					.onUpdate("CASCADE");
 			})
 	);
 };

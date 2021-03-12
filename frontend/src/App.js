@@ -4,6 +4,7 @@ import "./App.css";
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
 import ProductScreen from "./screens/ProductScreen";
+import CartScreen from "./screens/CartScreen";
 function App() {
 	const openMenu = () => {
 		document.querySelector(".sidebar").classList.add("open");
@@ -43,6 +44,7 @@ function App() {
 				<main className="main">
 					<div className="content">
 						<Route exact path="/" component={HomeScreen} />
+						<Route path="/cart/:id?" component={CartScreen} />
 						<Route path="/products/:id" component={ProductScreen} />
 					</div>
 				</main>
