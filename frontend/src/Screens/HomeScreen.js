@@ -1,44 +1,30 @@
-import React, { useEffect } from "react";
-// import axios from "axios";
-import { Link } from "react-router-dom";
-import { useDispatch, useSelector } from "react-redux";
-import { listProducts } from "../actions/productActions";
+import React from "react";
+// import { image } from "./";
 function HomeScreen(props) {
-	const productList = useSelector((state) => state.productList);
-	const { products, loading, error } = productList;
-	const dispatch = useDispatch();
-	useEffect(() => {
-		dispatch(listProducts());
-		return () => {};
-	}, []);
-	return loading ? (
-		<div>Loadding</div>
-	) : error ? (
-		<div>{error}</div>
-	) : (
-		<div>
-			<ul className="products">
-				{products.map((product) => (
-					<li key={product.id}>
-						<div className="product">
-							<Link to={`/products/${product.id}`}>
-								<img
-									className="product-image"
-									src={product.image}
-									alt="product"
-								/>
+	return (
+		<div className="home-container">
+			<div className="home-top-left">
+				<div className="home-top-left-content">
+					<h1 className="home-h1">Kellys Corner</h1>
+					<p>
+						lorem ipsum dolor sit amet, consectetur adipis lorem ipsum dolor
+						lorem ipsum dolor lorem ipsum dolor lorem ipsum dolor sit amet,
+						consectetur adipis lorem ipsum dolor lorem ipsum dolor lorem ipsum
+						dolor
+					</p>
+					<div className="home-button-wrap">
+						<button
+							onClick={() => props.history.push("/products")}
+							className="btn prim-btn"
+						>
+							Shop Now
+						</button>
+						<button className="btn sec-button">Read More</button>
+					</div>
+				</div>
+			</div>
 
-								<div className="product-name">{product.name}</div>
-							</Link>
-							<div className="product-brand">{product.brand}</div>
-							<div className="product-price">${product.price}</div>
-							<div className="product-rating">
-								{product.rating} Stars ({product.numReviews} Reviews)
-							</div>
-						</div>{" "}
-					</li>
-				))}
-			</ul>
+			<div className="home-top-right"></div>
 		</div>
 	);
 }

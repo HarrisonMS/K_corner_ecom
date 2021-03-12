@@ -1,14 +1,109 @@
+@import url("https://fonts.googleapis.com/css2?family=Abril+Fatface&family=Lato&display=swap");
 html {
 	font-size: 62.5%; /* 16px * 62.5 = 10px = 1rem */
 	box-sizing: border-box;
 }
 body {
-	font: 1.6rem Helvetica;
+	font: 1.6rem Lato;
 	height: 100vh;
 	margin: 0;
 }
 #root {
 	height: 100%;
+}
+:root {
+	--main-bg-color: #0075db;
+	--secondary-bg-color: #e59b25;
+}
+.home-container {
+	width: 100%;
+	min-height: 100vh;
+	background-image: linear-gradient(
+			90deg,
+			#0075db 38.88%,
+			rgba(0, 101, 189, 0) 100%
+		),
+		url("./img/lanterns-svg.svg");
+	background-repeat: no-repeat;
+	background-attachment: fixed;
+	background-position: center;
+	background-size: cover;
+	display: flex;
+	flex-direction: row;
+}
+
+.home-top-left {
+	display: flex;
+	flex-direction: row;
+	width: 50%;
+	align-items: center;
+	justify-content: center;
+}
+.home-top-left-content {
+	width: 100%;
+	margin-bottom: 20%;
+	margin-left: 15%;
+}
+.home-h1 {
+	font-family: Abril Fatface;
+	font-style: normal;
+	font-weight: normal;
+	line-height: 0.8;
+	font-size: 16rem;
+	color: var(--secondary-bg-color);
+	margin: 0;
+	margin-bottom: 5rem;
+}
+.home-top-left-content p {
+	font-family: Lato;
+	font-style: normal;
+	font-weight: normal;
+	font-size: 2rem;
+	line-height: 1.5;
+	color: rgba(249, 228, 125, 0.71);
+	margin-bottom: 4rem;
+	width: 60%;
+	margin-left: 1rem;
+}
+.home-button-wrap {
+	width: 50%;
+	display: flex;
+	justify-content: flex-start;
+	margin-left: 1rem;
+}
+.btn {
+	padding: 7px 15px;
+	border-radius: 5px;
+	background-color: var(--secondary-bg-color);
+	color: #fff;
+	font-weight: bold;
+	font-size: 16px;
+	outline: none;
+	border: 2px solid transparent;
+	transition: all 220ms ease-in-out;
+	cursor: pointer;
+}
+.btn:hover {
+	background-color: transparent;
+	border: 2px solid var(--secondary-bg-color);
+}
+.btn:active {
+	transform: translateY(2px);
+}
+.prim-btn {
+	transition: background-color 300ms ease-in-out, color 300ms ease-in-out;
+	margin-right: 2rem;
+}
+.prim-btn:hover {
+	background-color: transparent;
+	box-shadow: 0 0 40px 40px transparent inset;
+	color: white;
+}
+.sec-button {
+}
+.home-img {
+	width: 100%;
+	height: 100vh;
 }
 .grid-container {
 	display: grid;
@@ -22,7 +117,9 @@ body {
 }
 .header {
 	grid-area: header;
-	background-color: #495477;
+
+	background-color: var(--main-bg-color);
+	opacity: 0.99;
 	color: #ffffff;
 	display: flex;
 	justify-content: space-between;
@@ -41,14 +138,14 @@ body {
 	padding: 1rem;
 }
 .header-links a:hover {
-	color: #ebcd6a;
+	color: var(--secondary-bg-color);
 }
 .main {
 	grid-area: main;
 }
 .footer {
 	grid-area: footer;
-	background-color: #495477;
+	background-color: var(--main-bg-color);
 	color: #ffffff;
 	display: flex;
 	justify-content: center;
@@ -58,7 +155,7 @@ a {
 	text-decoration: none;
 }
 a:hover {
-	color: #ebcd6a;
+	color: var(--secondary-bg-color);
 }
 /* Home Screen */
 .products {
@@ -206,12 +303,12 @@ a:hover {
 button:active {
 	transition: 0.2s all;
 	transform: translateY(0.05rem);
-	background-color: darken(#ebcd6a, 80%);
+	background-color: darken(var(--secondary-bg-color), 80%);
 }
 
 .button:focus {
 	outline: none;
 }
 .button {
-	background-color: #ebcd6a;
+	background-color: var(--secondary-bg-color);
 }
