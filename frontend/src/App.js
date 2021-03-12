@@ -3,6 +3,7 @@ import "./App.css";
 
 import { BrowserRouter as Router, Route, Link } from "react-router-dom";
 import HomeScreen from "./screens/HomeScreen";
+import ProductListScreen from "./screens/ProductListScreen";
 import ProductScreen from "./screens/ProductScreen";
 import CartScreen from "./screens/CartScreen";
 function App() {
@@ -19,7 +20,7 @@ function App() {
 				<header className="header">
 					<div className="brand">
 						<button onClick={openMenu}>&#9776;</button>
-						<Link to="/">Kellys Corner</Link>
+						<Link to="/">KC</Link>
 					</div>
 					<div className="header-links">
 						<a href="cart.html">Cart</a>
@@ -44,6 +45,7 @@ function App() {
 				<main className="main">
 					<div className="content">
 						<Route exact path="/" component={HomeScreen} />
+						<Route exact path="/products" component={ProductListScreen} />
 						<Route path="/cart/:id?" component={CartScreen} />
 						<Route path="/products/:id" component={ProductScreen} />
 					</div>
